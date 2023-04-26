@@ -10,6 +10,7 @@ const int l3_latency = 100;
 const int l1_line = 256;
 const int l2_line = 1024;
 const int l3_line = 4096;
+int CPU;
 // address of a line is the starting address of the memory
 // region which it contains. line size 1KB 
 //0x0400 - 0x07ff any access in this range is a hit
@@ -40,6 +41,7 @@ struct L3{
     double frame; 
     bool hit = false;
     int cycles = 0;
+    int finalval = 0;
     // we are searching in L1 right now
     for (int i = 0; i < address.length(); ++i){
         for(int k = 0; k < 4; ++k)
@@ -93,4 +95,11 @@ void addStruct(struct &cache, int memAddr)
         return;
     }
     }
+}
+void loadaddress(int value)
+{
+    CPU = value;
+}
+void incrementAge(struct &cache){
+    
 }
